@@ -6,46 +6,51 @@ namespace SnakeAndLadder
 {
     public class SandL
     {
-        public const int noPlay = 1;
-        public const int lad = 2;
-        public const int snake = 3;
-        public const int wins = 100;
+        int move = 0;
+        int restart = 0;
+        public const int lad = 1;
+        public const int snake = 2;
         public void SL()
         {
-            Console.WriteLine("UC3");
+            Console.WriteLine("UC4");
             Console.WriteLine("-------------------------");
-            Random r1 = new Random();
-            Random r2 = new Random();
-            int dice = r1.Next(1, 7);
-            int swi = r2.Next(1, 4);
-            int move = 0;
-            //while(move<wins)
-            //{
-            switch (swi)
+            for (move = 0; move < 100; move++)
             {
-                case noPlay:
-                    //to print no play
-                    Console.WriteLine("The position moved is :- " + move);
-                    Console.WriteLine("Hence No Play");
-                    break;
-                case lad:
-                    //to print ladder position
-                    move = move + dice;
-                    Console.WriteLine("The position is moved forward by   " + move);
-                    break;
-                case snake:
-                    // to print snake position
-                    move = move - dice;
-                    Console.WriteLine("The position is moved backward by  " + dice);
-                    break;
+                Random r = new Random();
+                int dice = r.Next(1, 6);
+                Random sel = new Random();
+                int choice = sel.Next(0, 3);
+                switch (choice)
+                {
+                    case 0:
+                        Console.WriteLine("No play");
+                        break;
+                    case 1:
+                        Console.WriteLine("Got ladder");
+                        move = move + dice;
+                        Console.WriteLine("Coin position at " + move);
+                        break;
+                    case 2:
+                        Console.WriteLine("Reached snake");
+                        move = move - dice;
+                        if (move < 0)
+                        {
+                            Console.WriteLine("Restarting -- Coin position at " + restart);
+                            move = restart;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Coin position at " + move);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid");
+                        break;
 
-                default:
-                    Console.WriteLine("INVALID NUMBER");
-                    break;
+
+                }
+
             }
-
-            //}
-
             Console.WriteLine("-------------------------");
         }
     }
