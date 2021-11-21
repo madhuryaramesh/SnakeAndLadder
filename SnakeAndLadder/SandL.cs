@@ -10,9 +10,15 @@ namespace SnakeAndLadder
         public const int wins = 100;
         public void SL()
         {
-            Console.WriteLine("UC1");
+            //READ A NUMBER 0-6 USING RANDOM --
+
+            Console.WriteLine("UC2");
             Console.WriteLine("-------------------------");
-            Console.WriteLine("The starting position is:- " + startpos);
+            Random r1 = new Random();
+            //    Random r2 = new Random();
+            int dice = r1.Next(1, 7);
+            //     int swi = r2.Next(1, 4);
+            Console.WriteLine("Rolled dice value is:-   "+dice);
             Console.WriteLine("-------------------------");
         }
     }
